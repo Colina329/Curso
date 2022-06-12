@@ -46,16 +46,14 @@
         </div>
     </div>
 
-    <div id="novedades" class="row py-4 nove">
+    <div id="novedades" class="row py-4 ">
         <div class="col-md-5 offset-md-2 py-3">
             <h2>Novedades</h2>
             <ul class="lista-novedades">
-                <li><a href="#" data-toggle="modal" data-target="#modalEjemplo"><img src="images/Dibujos4.jpg">Nuevos
-                        Dibujos</a></li>
-                <li><a href="#"><img src="images/Dibujos19.jpg">Nuevos Dibujos</a></li>
-                <li><a href="#"><img src="images/Dibujos13.jpg">Nuevos Dibujos</a></li>
-                <li><a href="#"><img src="images/Dibujos15.jpg">Nuevos Dibujos</a></li>
-                <li><a href="#"><img src="images/Dibujos17.jpg">Nuevos Dibujos</a></li>
+                {{#each novedades}}
+                <li><a href="javascript:void(0);" data-toggle="modal" data-target="#modal{{id}}"><img src="{{imagen}}">{{titulo}}
+                </a></li>
+                {{/each}}
             </ul>
         </div>
         <div class="col-md-3">
@@ -103,17 +101,20 @@
         </div>
 
         <!--Inicio Modal-->
-        <div class="modal fade" id="modalEjemplo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        {{#each novedades}}
+        <div class="modal fade" id="modal{{id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">{{titulo}}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        ...
+                        <h6>{{subtitulo}}</h6>
+                        <img src="{{imagen}}" alt="">
+                        <p>{{cuerpo}}</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -122,6 +123,7 @@
                 </div>
             </div>
         </div>
+        {{/each}}
 
         <!--Fin Modal-->
 
@@ -154,7 +156,7 @@
     </div>
 </div>
 
-<div id="Nosotros" class="row aling-items-stretch my-3 staff py-4 staff">
+<div id="nosotros" class="row aling-items-stretch my-3 staff py-4 staff">
     <div class="col-lg-8 offset-lg-2">
         <h2>Nosotros</h2>
         <div class="card-deck">
